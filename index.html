@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Immersion Report Y.CO Monaco</title>
+
+<style>
+  :root {
+    --yellow:  #FFC719;
+    --fyellow: #FFFF17;
+    --black:   #000000;
+    --white:   #FFFFFF;
+    --ecru:    #F5F4EA;
+    --gray:    #6B6B6B;
+    --lgray:   #E0DFDA;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: Arial, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── GLYPH ── */
+  .glyph {
+    width: 48px; height: 48px;
+    border: 3px solid var(--yellow);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .glyph svg { width: 26px; height: 26px; }
+  .glyph-lg {
+    width: 80px; height: 80px;
+    border: 5px solid var(--yellow);
+  }
+  .glyph-lg svg { width: 42px; height: 42px; }
+  .glyph-inv { border-color: var(--yellow); background: var(--black); }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--yellow);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 64px;
+    background: var(--black);
+  }
+
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cover-logo-text {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .cover-nav-label {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cover-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+    position: relative;
+  }
+
+  .cover-eyebrow {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--black);
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+
+  .cover-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.88;
+    color: var(--black);
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .cover-title .line2 {
+    color: var(--white);
+    display: block;
+  }
+
+  .cover-subtitle {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--black);
+    margin-top: 32px;
+    max-width: 500px;
+    opacity: 0.75;
+  }
+
+  .cover-bg-text {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 340px;
+    color: rgba(0,0,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .cover-bottom {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 4px solid var(--yellow);
+  }
+
+  .cover-stat {
+    padding: 28px 36px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .cover-stat:last-child { border-right: none; }
+
+  .cover-stat label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .cover-stat span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--black);
+    padding: 80px 64px;
+    border-bottom: 4px solid var(--yellow);
+  }
+
+  .toc-heading {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 40px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .toc-item {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .toc-item:hover .toc-name { color: var(--yellow); }
+
+  .toc-n {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--yellow);
+    min-width: 28px;
+    letter-spacing: 1px;
+  }
+
+  .toc-name {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+  }
+
+  /* ── SECTION WRAPPERS ── */
+  .section { padding: 100px 64px; max-width: 1200px; margin: 0 auto; }
+  .full-bleed { max-width: 100%; padding: 100px 64px; }
+  .full-bleed .inner { max-width: 1200px; margin: 0 auto; }
+  .bg-black { background: var(--black); }
+  .bg-ecru  { background: var(--ecru); }
+  .bg-yellow{ background: var(--yellow); }
+
+  /* ── SECTION HEADER ── */
+  .sh {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 64px;
+    border-bottom: 4px solid var(--black);
+    padding-bottom: 24px;
+  }
+
+  .sh-light {
+    border-color: var(--yellow);
+  }
+
+  .sh-num {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--yellow);
+    min-width: 64px;
+    padding-top: 6px;
+  }
+
+  .sh-num-dark { color: rgba(0,0,0,0.2); }
+
+  .sh-wrap {}
+
+  .sh-tag {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .sh-tag-dark { color: var(--gray); }
+
+  .sh-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .sh-title-light { color: var(--white); }
+
+  /* ── BODY TEXT ── */
+  .p { font-size: 15px; line-height: 1.85; color: #1a1a1a; font-weight: 300; margin-bottom: 20px; }
+  .p-light { color: rgba(255,255,255,0.7); }
+  .p-ecru { color: #2a2a2a; }
+
+  .h2 {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--black);
+    margin: 48px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--yellow);
+    display: inline-block;
+  }
+
+  .h2-light { color: var(--white); border-color: rgba(255,199,25,0.4); }
+
+  .h3 {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin: 32px 0 10px;
+  }
+  .h3-dark { color: var(--black); }
+
+  /* ── PULL QUOTE ── */
+  .pq {
+    background: var(--yellow);
+    padding: 36px 40px;
+    margin: 40px 0;
+  }
+
+  .pq p {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .pq-inv {
+    background: var(--black);
+  }
+
+  .pq-inv p { color: var(--yellow); }
+
+  /* ── 2 COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+
+  /* ── TAGS ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+  .tag {
+    background: var(--black);
+    color: var(--yellow);
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border: 1px solid var(--black);
+  }
+
+  /* ── SWOT ── */
+  .swot { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 48px; }
+
+  .swot-q {
+    padding: 40px;
+    position: relative;
+  }
+
+  .sq1 { background: var(--yellow); }
+  .sq2 { background: var(--black); }
+  .sq3 { background: var(--ecru); }
+  .sq4 { background: #1a1a1a; }
+
+  .swot-q-label {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .sq1 .swot-q-label { color: rgba(0,0,0,0.5); }
+  .sq2 .swot-q-label, .sq4 .swot-q-label { color: rgba(255,199,25,0.7); }
+  .sq3 .swot-q-label { color: var(--gray); }
+
+  .swot-q-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .sq1 .swot-q-title { color: var(--black); }
+  .sq2 .swot-q-title, .sq4 .swot-q-title { color: var(--white); }
+  .sq3 .swot-q-title { color: var(--black); }
+
+  .swot-q ul { list-style: none; }
+  .swot-q ul li {
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    gap: 10px;
+  }
+
+  .sq2 ul li, .sq4 ul li {
+    border-color: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .sq1 ul li, .sq3 ul li { color: rgba(0,0,0,0.7); }
+
+  .swot-q ul li::before {
+    content: '→';
+    flex-shrink: 0;
+    opacity: 0.35;
+  }
+
+  /* ── PESTEL ── */
+  .pestel { margin-top: 48px; }
+
+  .pestel-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    margin-bottom: 4px;
+  }
+
+  .pestel-key {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+  }
+
+  .pestel-key span {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
+
+  .pestel-val {
+    background: var(--ecru);
+    padding: 24px 36px;
+    border-left: 4px solid var(--yellow);
+  }
+
+  .pestel-val p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #2a2a2a;
+    font-weight: 300;
+  }
+
+  /* ── PORTER CARDS ── */
+  .porter-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 48px;
+  }
+
+  .pc {
+    padding: 32px 28px;
+    background: var(--ecru);
+    position: relative;
+    border-top: 4px solid var(--black);
+  }
+
+  .pc-special {
+    background: var(--yellow);
+    border-top-color: var(--black);
+  }
+
+  .pc-num {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 80px;
+    color: rgba(0,0,0,0.06);
+    position: absolute;
+    top: 12px; right: 16px;
+    line-height: 1;
+  }
+
+  .pc-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .pc-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .pc-rating {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--yellow);
+    display: inline-block;
+    padding: 3px 10px;
+    margin-bottom: 14px;
+  }
+
+  .pc-special .pc-rating {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  .pc-text { font-size: 13px; line-height: 1.65; color: #444; font-weight: 300; }
+
+  /* ── CONTRIBUTION CARDS ── */
+  .cc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 48px;
+  }
+
+  .cc {
+    background: var(--ecru);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cc::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--yellow);
+  }
+
+  .cc-n {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 120px;
+    color: rgba(0,0,0,0.05);
+    position: absolute;
+    bottom: -20px; right: 12px;
+    line-height: 1;
+  }
+
+  .cc-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--black);
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .cc-text { font-size: 13.5px; line-height: 1.75; color: #333; font-weight: 300; position: relative; }
+
+  /* ── JD TABLE ── */
+  .jd { width: 100%; border-collapse: collapse; margin-top: 24px; }
+  .jd tr { border-bottom: 1px solid var(--lgray); }
+  .jd td { padding: 14px 20px; font-size: 14px; vertical-align: top; line-height: 1.65; }
+  .jd td:first-child {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--ecru);
+    width: 180px;
+  }
+
+  /* ── REFLECTION PANELS ── */
+  .rp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 48px;
+  }
+
+  .rp {
+    background: var(--ecru);
+    padding: 36px;
+    border-left: 4px solid var(--yellow);
+  }
+
+  .rp h4 {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--black);
+  }
+
+  .rp p { font-size: 13.5px; line-height: 1.75; color: #333; font-weight: 300; }
+
+  /* ── CLOSING BANNER ── */
+  .closing {
+    background: var(--yellow);
+    padding: 120px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-bg {
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 400px;
+    color: rgba(0,0,0,0.05);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .closing-text {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--black);
+    max-width: 900px;
+    margin: 0 auto 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-sub {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── REFS ── */
+  .ref-item {
+    padding: 14px 0 14px 24px;
+    text-indent: -24px;
+    border-bottom: 1px solid var(--lgray);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #333;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    border-top: 4px solid var(--yellow);
+    padding: 36px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo { display: flex; align-items: center; gap: 14px; }
+  .footer-logo span {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── DIVIDER ── */
+  .yd { height: 4px; background: var(--yellow); }
+  .yd-thin { height: 1px; background: var(--lgray); margin: 32px 0; }
+
+  /* ── FADE IN ── */
+  .fi { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fi.on { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    .cover-nav, .section, .full-bleed, .toc { padding-left: 24px; padding-right: 24px; }
+    .cover-bottom { grid-template-columns: 1fr 1fr; }
+    .two-col, .three-col, .swot, .cc-grid, .porter-cards, .rp-grid, .toc-grid { grid-template-columns: 1fr; }
+    .pestel-row { grid-template-columns: 60px 1fr; }
+    .cover-title { font-size: 72px; }
+    .sh-title { font-size: 40px; }
+    .footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ════════════════════════════════════════════════════ -->
+<div class="cover">
+  <nav class="cover-nav">
+    <div class="cover-logo">
+      <div class="glyph glyph-inv">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5L13 15V22M21 5L13 15" stroke="#FFC719" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="cover-logo-text">Y.CO</span>
+    </div>
+    <span class="cover-nav-label">Internship Report Spring 2026</span>
+  </nav>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Company Immersion Internship</div>
+    <h1 class="cover-title">
+      Marketing<br>
+      <span class="line2">Content.</span>
+    </h1>
+    <p class="cover-subtitle">Monaco 19 January to 19 May 2026<br>Superyacht Brokerage &amp; Full Yacht Services</p>
+    <div class="cover-bg-text">Y</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stat">
+      <label>Student</label>
+      <span>Grace Bruell</span>
+    </div>
+    <div class="cover-stat">
+      <label>Program</label>
+      <span>BBA3 Hons</span>
+    </div>
+    <div class="cover-stat">
+      <label>Institution</label>
+      <span>IUM Monaco</span>
+    </div>
+    <div class="cover-stat">
+      <label>Submission Date</label>
+      <span>1 May 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOC ══════════════════════════════════════════════════════ -->
+<div class="toc">
+  <p class="toc-heading">Contents</p>
+  <nav class="toc-grid">
+    <a class="toc-item" href="#ack"><span class="toc-n"></span><span class="toc-name">Acknowledgements</span></a>
+    <a class="toc-item" href="#exec"><span class="toc-n"></span><span class="toc-name">Executive Summary</span></a>
+    <a class="toc-item" href="#intro"><span class="toc-n">01</span><span class="toc-name">Introduction</span></a>
+    <a class="toc-item" href="#pestel"><span class="toc-n">02</span><span class="toc-name">PESTEL Analysis</span></a>
+    <a class="toc-item" href="#swot"><span class="toc-n">03</span><span class="toc-name">SWOT &amp; Strategy</span></a>
+    <a class="toc-item" href="#comp"><span class="toc-n">04</span><span class="toc-name">Competitive Environment</span></a>
+    <a class="toc-item" href="#sus"><span class="toc-n">05</span><span class="toc-name">Sustainability &amp; Ethics</span></a>
+    <a class="toc-item" href="#role"><span class="toc-n">06</span><span class="toc-name">My Role &amp; Contributions</span></a>
+    <a class="toc-item" href="#refl"><span class="toc-n">07</span><span class="toc-name">Reflections</span></a>
+    <a class="toc-item" href="#conc"><span class="toc-n">08</span><span class="toc-name">Conclusion</span></a>
+    <a class="toc-item" href="#refs"><span class="toc-n"></span><span class="toc-name">References</span></a>
+    <a class="toc-item" href="#app"><span class="toc-n"></span><span class="toc-name">Appendices</span></a>
+  </nav>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ ACKNOWLEDGEMENTS ═════════════════════════════════════════ -->
+<section class="section" id="ack">
+  <div class="sh fi">
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Preface</span>
+      <h2 class="sh-title">Acknowledgements</h2>
+    </div>
+  </div>
+  <div class="fi">
+    <p class="p">I would like to express my sincere gratitude to the team at Y.CO in Monaco for welcoming me as a Marketing Content Intern and providing an environment that was both stimulating and professionally enriching. The opportunity to contribute to meaningful marketing initiatives for one of the world's most prestigious superyacht companies has been an invaluable experience that I will carry throughout my career.</p>
+    <p class="p">I am particularly grateful to the Marketing department for their patience, guidance, and genuine investment in my development. The trust they extended in allowing me to take ownership of content creation and research tasks from an early stage was both motivating and instructive.</p>
+    <p class="p">I would also like to thank Dr. Patrice Sargenti and Delphine Baron at the International University of Monaco for their support throughout this placement. Finally, I thank my fellow interns and the wider Y.CO team for their collegiality a genuinely multicultural, cosmopolitan environment that reflects the global character of this industry.</p>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ EXEC SUMMARY ═════════════════════════════════════════════ -->
+<div class="full-bleed bg-black" id="exec">
+  <div class="inner">
+    <div class="sh sh-light fi">
+      <div class="sh-wrap">
+        <span class="sh-tag">Overview</span>
+        <h2 class="sh-title sh-title-light">Executive Summary</h2>
+      </div>
+    </div>
+    <div class="two-col fi">
+      <div>
+        <p class="p p-light">This report documents and analyses a four-month Company Immersion Internship undertaken at Y.CO, a globally renowned superyacht company headquartered in Monaco, from 19 January to 19 May 2026. The placement was undertaken as part of the BBA3 curriculum at the International University of Monaco, fulfilling the requirements of the Company Immersion Internship course (15 US credits).</p>
+        <p class="p p-light">The report provides a comprehensive analysis of Y.CO's business environment through PESTEL, SWOT, and Porter's Five Forces frameworks, examines competitive positioning within the superyacht market, and evaluates the marketing function in the context of UHNWI consumer behaviour.</p>
+      </div>
+      <div>
+        <p class="p p-light">The internship was carried out as Marketing Content Intern within the Marketing and Communications department. Core responsibilities included social media content creation and scheduling, copywriting for yacht listings and editorial pieces, and market research and competitor analysis.</p>
+        <div class="pq pq-inv" style="margin-top:28px;">
+          <p>A placement that confirmed not only what I am capable of but what kind of professional I want to become.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ INTRODUCTION ═════════════════════════════════════════════ -->
+<section class="section" id="intro">
+  <div class="sh fi">
+    <span class="sh-num">01</span>
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Background</span>
+      <h2 class="sh-title">Introduction</h2>
+    </div>
+  </div>
+
+  <div class="fi">
+    <div class="two-col">
+      <div>
+        <div class="h2">The Company</div>
+        <p class="p">Y.CO is an internationally recognised superyacht company founded in 2002, headquartered in Monaco with offices in London and Fort Lauderdale. The company provides a fully integrated suite of services yacht brokerage, charter marketing, management, crew placement, and new build consultancy serving among the most discerning clients in the global superyacht market.</p>
+        <p class="p">Y.CO's brand identity is built around three core pillars: <strong>trust, expertise, and discretion</strong> values that permeate all client-facing communications. Its portfolio spans explorer vessels, classic sailing yachts, motor yachts, and expedition craft.</p>
+      </div>
+      <div>
+        <div class="h2">The Role</div>
+        <p class="p">A structured series of inductions with the heads of each department brokerage, charter, management, crew, and new build provided a panoramic view of how Y.CO functions as an integrated business. This cross-departmental perspective directly shaped the quality and accuracy of all content produced throughout the placement.</p>
+        <p class="p">The role also introduced <strong>Salesforce</strong>, Y.CO's CRM system providing first-hand experience of how client data is structured, leads tracked across long sales cycles, and marketing activity aligned with commercial pipeline.</p>
+      </div>
+    </div>
+
+    <div class="tags" style="margin-top:40px;">
+      <span class="tag">Social Media Content</span>
+      <span class="tag">Copywriting</span>
+      <span class="tag">Competitor Analysis</span>
+      <span class="tag">Salesforce CRM</span>
+      <span class="tag">Content Scheduling</span>
+      <span class="tag">Market Research</span>
+      <span class="tag">Editorial Writing</span>
+      <span class="tag">Brand Communications</span>
+    </div>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ PESTEL ═══════════════════════════════════════════════════ -->
+<div class="full-bleed bg-ecru" id="pestel">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="sh-num sh-num-dark">02</span>
+      <div class="sh-wrap">
+        <span class="sh-tag sh-tag-dark">Macro Environment</span>
+        <h2 class="sh-title">PESTEL Analysis</h2>
+      </div>
+    </div>
+
+    <div class="pestel fi">
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Political</span></div>
+        <div class="pestel-val"><p>The superyacht industry operates within complex frameworks including SOLAS, MARPOL, and MLC 2006. Monaco's strong political stability provides Y.CO a trusted base. Geopolitical tensions particularly sanctions affecting Russian UHNWI clients have disrupted portfolios. Brexit has also complicated UK-EU crew certifications and logistics operations.</p></div>
+      </div>
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Economic</span></div>
+        <div class="pestel-val"><p>The global UHNWI population has grown at approximately 4–6% annually (Knight Frank, 2024), directly expanding Y.CO's addressable market. The global charter market was valued at over USD 7 billion in 2024. The luxury segment has demonstrated resilience against downturns, though inflationary pressures on fuel, maintenance, and crew wages increase owner operating costs.</p></div>
+      </div>
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Social</span></div>
+        <div class="pestel-val"><p>Ultra-luxury experiential travel has seen a structural shift clients seek curated experiences rather than ownership alone, driving charter demand. Social media, particularly Instagram and LinkedIn, has become central to aspirational yacht marketing. Younger UHNWI demographics engage with brands digitally long before committing to relationships.</p></div>
+      </div>
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Technological</span></div>
+        <div class="pestel-val"><p>Digital platforms have transformed how yachts are marketed, viewed, and booked. Virtual tours, drone videography, and high-production social content are now industry standards. CRM systems like Salesforce enable nuanced relationship management across long sales cycles. Hybrid and hydrogen propulsion create new sustainability narratives for marketing teams.</p></div>
+      </div>
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Environmental</span></div>
+        <div class="pestel-val"><p>IMO's 2020 sulfur cap and tightening Carbon Intensity Indicator (CII) ratings pressure operators to decarbonise. Green yachting solar panels, waste management, low-emission propulsion is gaining traction among environmentally conscious clients. Y.CO has a genuine opportunity to lead on sustainable yachting communications as the sector transitions.</p></div>
+      </div>
+      <div class="pestel-row">
+        <div class="pestel-key"><span>Legal</span></div>
+        <div class="pestel-val"><p>GDPR compliance is critical given Y.CO's management of highly sensitive client data. MLC 2006 governs crew conditions internationally. Anti-money laundering regulations have intensified due diligence requirements. Yacht flagging, registration, and charter licensing vary by jurisdiction, requiring careful legal navigation across multiple territories.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ SWOT ══════════════════════════════════════════════════════ -->
+<section class="section" id="swot">
+  <div class="sh fi">
+    <span class="sh-num">03</span>
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Internal Analysis</span>
+      <h2 class="sh-title">SWOT &amp; Strategy</h2>
+    </div>
+  </div>
+  <div class="fi">
+    <p class="p">Y.CO pursues a <strong>differentiation strategy</strong> (Porter, 1985): competing not on price, but on the quality, comprehensiveness, and exclusivity of its integrated offering. By providing brokerage, charter, management, and new build consultancy under one roof, Y.CO creates significant switching costs and deepens client relationships over time. The culture is defined by professionalism, discretion, and a genuine passion for the sea.</p>
+
+    <div class="swot">
+      <div class="swot-q sq1">
+        <div class="swot-q-label">Internal Positive</div>
+        <div class="swot-q-title">Strengths</div>
+        <ul>
+          <li>Monaco HQ global prestige and unmatched network</li>
+          <li>Full-service: brokerage, charter, management, crew</li>
+          <li>Strong digital presence and brand heritage (est. 2002)</li>
+          <li>Experienced, multilingual international team</li>
+          <li>Deep relationships with shipyards and UHNWI clientele</li>
+        </ul>
+      </div>
+      <div class="swot-q sq2">
+        <div class="swot-q-label">Internal Negative</div>
+        <div class="swot-q-title">Weaknesses</div>
+        <ul>
+          <li>Highly seasonal revenue patterns (peak: May–Sept)</li>
+          <li>Premium pricing limits addressable market</li>
+          <li>Heavy reliance on personal relationships for growth</li>
+          <li>Limited automation in client communications</li>
+          <li>Marketing team lean relative to scope of coverage</li>
+        </ul>
+      </div>
+      <div class="swot-q sq3">
+        <div class="swot-q-label">External Positive</div>
+        <div class="swot-q-title">Opportunities</div>
+        <ul>
+          <li>Growing global UHNWI population year-on-year</li>
+          <li>Rising charter demand experiential luxury trend</li>
+          <li>Green/hybrid yachting as differentiation narrative</li>
+          <li>Video and social storytelling expansion</li>
+          <li>New build growth in Asia-Pacific market</li>
+        </ul>
+      </div>
+      <div class="swot-q sq4">
+        <div class="swot-q-label">External Negative</div>
+        <div class="swot-q-title">Threats</div>
+        <ul>
+          <li>Geopolitical instability affecting owner demographics</li>
+          <li>Competition: Fraser, Burgess, Camper &amp; Nicholsons</li>
+          <li>Tightening IMO environmental regulations</li>
+          <li>Reputational exposure via high-profile clientele</li>
+          <li>Currency fluctuations affecting charter pricing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ COMPETITIVE ══════════════════════════════════════════════ -->
+<div class="full-bleed bg-black" id="comp">
+  <div class="inner">
+    <div class="sh sh-light fi">
+      <span class="sh-num" style="color:rgba(255,199,25,0.3);">04</span>
+      <div class="sh-wrap">
+        <span class="sh-tag">Industry Analysis</span>
+        <h2 class="sh-title sh-title-light">Competitive Environment</h2>
+      </div>
+    </div>
+
+    <div class="fi">
+      <p class="p p-light">Porter's Five Forces (Porter, 1979) reveals a market characterised by high competitive rivalry, powerful buyers, and moderate barriers to entry making brand differentiation and relationship depth Y.CO's primary competitive advantages.</p>
+
+      <div class="porter-cards">
+        <div class="pc">
+          <div class="pc-num">1</div>
+          <div class="pc-label">Force 01</div>
+          <div class="pc-title">Competitive Rivalry</div>
+          <div class="pc-rating">HIGH</div>
+          <p class="pc-text">Fraser Yachts, Burgess, Camper &amp; Nicholsons, and Northrop &amp; Johnson all compete for the same UHNWI clients. Differentiation relies heavily on network depth and trust built over years.</p>
+        </div>
+        <div class="pc">
+          <div class="pc-num">2</div>
+          <div class="pc-label">Force 02</div>
+          <div class="pc-title">Threat of New Entrants</div>
+          <div class="pc-rating">MODERATE</div>
+          <p class="pc-text">High barriers in capital, regulatory knowledge, and client trust. Digital-native boutique brokerages are emerging but lack the asset management depth of established players.</p>
+        </div>
+        <div class="pc">
+          <div class="pc-num">3</div>
+          <div class="pc-label">Force 03</div>
+          <div class="pc-title">Buyer Power</div>
+          <div class="pc-rating">HIGH</div>
+          <p class="pc-text">UHNWI clients have extensive options and long decision cycles. A single dissatisfied client can represent multi-million-euro losses, giving buyers significant leverage over service providers.</p>
+        </div>
+        <div class="pc">
+          <div class="pc-num">4</div>
+          <div class="pc-label">Force 04</div>
+          <div class="pc-title">Threat of Substitutes</div>
+          <div class="pc-rating">MODERATE</div>
+          <p class="pc-text">Private aviation, luxury villas, and expedition cruises compete for the same leisure budget. However, the unique privacy and mobility of a superyacht sustains strong demand.</p>
+        </div>
+        <div class="pc">
+          <div class="pc-num">5</div>
+          <div class="pc-label">Force 05</div>
+          <div class="pc-title">Supplier Power</div>
+          <div class="pc-rating">MODERATE</div>
+          <p class="pc-text">Shipyards hold power during high-demand periods. Crew agencies and refit specialists can influence service quality and costs, though strong relationships mitigate much of this leverage.</p>
+        </div>
+        <div class="pc pc-special">
+          <div class="pc-num" style="color:rgba(0,0,0,0.08);">Y</div>
+          <div class="pc-label" style="color:rgba(0,0,0,0.5);">Overall</div>
+          <div class="pc-title">Y.CO's Position</div>
+          <div class="pc-rating">DEFENSIBLE</div>
+          <p class="pc-text" style="color:#1a1a1a;">Full-service model, Monaco HQ, and an established brand create a defensible competitive position but sustained marketing investment remains essential.</p>
+        </div>
+      </div>
+
+      <div class="h2 h2-light" style="margin-top:64px;">Branding Strategy</div>
+      <div class="two-col" style="margin-top:24px;">
+        <p class="p p-light">Y.CO operates on a premium positioning model targeting UHNWI individuals globally. The brand communicates exclusivity, expertise, and trust through high-quality visual content, editorial authority, and discreet, personalised relationship marketing. Instagram and LinkedIn proved the highest-performing platforms for engagement and enquiry generation respectively.</p>
+        <div class="pq" style="margin:0;">
+          <p>The brief: create content that resonates with a client arriving by sea not a tourist arriving by bus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ SUSTAINABILITY ════════════════════════════════════════════ -->
+<section class="section" id="sus">
+  <div class="sh fi">
+    <span class="sh-num">05</span>
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Ethics &amp; CSR</span>
+      <h2 class="sh-title">Sustainability</h2>
+    </div>
+  </div>
+  <div class="two-col fi">
+    <div>
+      <p class="p">Sustainability is an increasingly central consideration in the superyacht industry historically criticised for its environmental footprint. Y.CO has begun addressing this through its communications and client advisory services. During the internship, the marketing team produced content aligned with growing environmental awareness including editorial pieces on hybrid propulsion, waste management best practices, and sustainable marinas.</p>
+      <p class="p">Ethically, Y.CO operates with rigorous due diligence in client on-boarding, given regulatory requirements around AML and KYC. Confidentiality is treated as a core organisational value all staff, including interns, observe strict discretion regarding client identities and transactions (Carroll, 1991).</p>
+    </div>
+    <div>
+      <div class="pq">
+        <p>Y.CO's marketing function is best placed to lead the company's sustainability communications a significant opportunity yet to be fully seized.</p>
+      </div>
+      <p class="p">While a standalone CSR report does not yet exist, the marketing function could play a significant role in formalising and communicating sustainability commitments particularly to a younger generation of UHNWI clients for whom environmental values increasingly shape purchasing decisions.</p>
+    </div>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ ROLE ══════════════════════════════════════════════════════ -->
+<div class="full-bleed bg-ecru" id="role">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="sh-num sh-num-dark">06</span>
+      <div class="sh-wrap">
+        <span class="sh-tag sh-tag-dark">Professional Experience</span>
+        <h2 class="sh-title">My Role &amp; Contributions</h2>
+      </div>
+    </div>
+
+    <div class="fi">
+      <div class="h3 h3-dark">Job Description</div>
+      <table class="jd">
+        <tr><td>Job Title</td><td>Marketing Content Intern</td></tr>
+        <tr><td>Department</td><td>Marketing &amp; Communications</td></tr>
+        <tr><td>Reporting To</td><td>Marketing Manager</td></tr>
+        <tr><td>Location</td><td>Y.CO Monaco</td></tr>
+        <tr><td>Period</td><td>19 January – 19 May 2026 (min. 35 hrs/week)</td></tr>
+        <tr><td>Key Tools</td><td>Salesforce CRM, Social media scheduling platforms, Adobe Suite / Canva, CMS</td></tr>
+        <tr><td>Languages</td><td>Fluency in English essential; additional languages advantageous</td></tr>
+        <tr><td>Education</td><td>BBA or equivalent business degree with a marketing focus</td></tr>
+      </table>
+    </div>
+
+    <div class="cc-grid fi" style="margin-top:56px;">
+      <div class="cc">
+        <div class="cc-n">1</div>
+        <div class="cc-title">Social Media &amp; Scheduling</div>
+        <p class="cc-text">Managed content calendars across Instagram, LinkedIn, Facebook, and YouTube adapting tone and format to each platform's audience. Established a consistent posting rhythm that improved engagement metrics over the placement period.</p>
+      </div>
+      <div class="cc">
+        <div class="cc-n">2</div>
+        <div class="cc-title">Copywriting &amp; Editorial</div>
+        <p class="cc-text">Produced yacht listing copy and destination editorial including <em>24h in Ibiza</em> and <em>24h in Saint-Tropez</em> original research-led articles curating experiences specifically for a superyacht-arriving client. Among the most creatively rewarding work of the placement.</p>
+      </div>
+      <div class="cc">
+        <div class="cc-n">3</div>
+        <div class="cc-title">Market Research</div>
+        <p class="cc-text">Conducted competitor analysis benchmarking Y.CO against Fraser, Burgess, and Camper &amp; Nicholsons applying SWOT and PESTEL frameworks in a live professional context to identify content gaps and strategic opportunities.</p>
+      </div>
+    </div>
+
+    <div class="fi" style="margin-top:64px;">
+      <div class="h3 h3-dark">Honest Performance Evaluation</div>
+      <div class="two-col" style="margin-top:24px;">
+        <div>
+          <p class="p p-ecru">Feedback from the supervising manager was consistently positive commendation for writing quality, brand tone, and research thoroughness. Areas for development included building greater content turnaround speed and deepening technical vessel knowledge.</p>
+          <p class="p p-ecru">A significant portion of time was also spent on more repetitive tasks notably building and formatting individual yacht pages on the company website. While this may appear routine, it reinforced an essential understanding: maintaining a large, accurate content repository is fundamental to a brokerage's commercial credibility.</p>
+        </div>
+        <div>
+          <div class="pq pq-inv">
+            <p>The contrast between methodical and creative work was itself a lesson in managing motivation, and knowing which kind of work brings out the best in you.</p>
+          </div>
+          <p class="p p-ecru" style="margin-top:20px;">By mid-internship, contributions required progressively less revision before publication a concrete indicator of professional adaptation and growing confidence in the brand voice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ REFLECTIONS ══════════════════════════════════════════════ -->
+<section class="section" id="refl">
+  <div class="sh fi">
+    <span class="sh-num">07</span>
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Organisational Behaviour</span>
+      <h2 class="sh-title">Workplace Reflections</h2>
+    </div>
+  </div>
+
+  <div class="fi">
+    <p class="p">Working within Y.CO's Monaco office provided rich insights into the behavioural patterns of a high-performing, international workforce. Most colleagues demonstrated strong intrinsic motivation driven by genuine passion for the superyacht world. This aligns with Herzberg's two-factor theory (1959): motivators such as meaningful work, recognition, and achievement dominated over hygiene factors in driving daily engagement.</p>
+
+    <div class="rp-grid">
+      <div class="rp">
+        <h4>Team Dynamics</h4>
+        <p>Despite the pressures of a seasonal industry, team collaboration was constructive and mutually supportive. Management's open-door approach contributed to psychological safety (Edmondson, 1999) junior members including interns were actively encouraged to contribute ideas and flag concerns.</p>
+      </div>
+      <div class="rp">
+        <h4>Career Development</h4>
+        <p>Progression in the superyacht industry is characterised by deep specialisation over time. Advancement relies heavily on relationship capital network quality and client loyalty matter as much as formal credentials, making early professional exposure particularly valuable.</p>
+      </div>
+      <div class="rp">
+        <h4>Wellbeing at Work</h4>
+        <p>Flexible arrangements were accommodated where possible, and the culture discouraged unnecessary overtime. This approach sustained high performance across the season a relevant consideration given the demanding expectations of the ultra-luxury sector.</p>
+      </div>
+      <div class="rp">
+        <h4>Cultural Intelligence</h4>
+        <p>Colleagues from over fifteen nationalities were observed across the Monaco office. This cosmopolitan environment reinforced the practical importance of cultural adaptability in building trust with an inherently international client base.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ CONCLUSION ═══════════════════════════════════════════════ -->
+<div class="full-bleed bg-black" id="conc">
+  <div class="inner">
+    <div class="sh sh-light fi">
+      <span class="sh-num" style="color:rgba(255,199,25,0.3);">08</span>
+      <div class="sh-wrap">
+        <span class="sh-tag">Final Thoughts</span>
+        <h2 class="sh-title sh-title-light">Conclusion</h2>
+      </div>
+    </div>
+    <div class="two-col fi">
+      <div>
+        <p class="p p-light">This internship at Y.CO Monaco was one of the most formative professional experiences of the BBA journey. The placement provided direct exposure to the realities of marketing within an elite luxury service firm, requiring the application of both analytical frameworks and creative skills within a demanding environment.</p>
+        <p class="p p-light">From an academic standpoint, SWOT, PESTEL, and Porter's Five Forces proved immediately applicable to real business challenges. The structured department inductions were invaluable providing a panoramic understanding of the business that would have taken months of daily exposure to assemble independently. Working within Salesforce connected classroom theory about CRM strategy to tangible professional practice.</p>
+        <p class="p p-light">The internship has also been clarifying in ways that extend beyond the anticipated. While the superyacht industry is undeniably fascinating and Y.CO's team exemplary, the placement surfaced an important self-awareness: a preference for dynamic, mobile, and client-interactive working environments over the screen-intensive rhythms of a content function.</p>
+      </div>
+      <div>
+        <div class="pq" style="margin-top:0;">
+          <p>Discovering what does not suit your working style is as valuable as discovering what does.</p>
+        </div>
+        <p class="p p-light" style="margin-top:28px;">This is not a criticism of Y.CO or the role it is a career insight of genuine value. The internship has redirected focus toward roles combining business acumen with greater mobility, client interaction, and variety whether in events, business development, or client-facing advisory positions within the luxury sector.</p>
+        <p class="p p-light">This clarity of direction is itself a significant return on four months of professional immersion, and Y.CO its people, culture, and world will remain a reference point for professional standards for years to come.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CLOSING BANNER ═══════════════════════════════════════════ -->
+<div class="closing">
+  <div class="closing-bg">Y.CO</div>
+  <p class="closing-text">Four months. One industry. A career direction clarified.</p>
+  <span class="closing-sub">International University of Monaco BBA3 Spring 2026</span>
+</div>
+
+<div class="yd"></div>
+
+<!-- ═══ REFERENCES ════════════════════════════════════════════════ -->
+<section class="section" id="refs">
+  <div class="sh fi">
+    <div class="sh-wrap">
+      <span class="sh-tag sh-tag-dark">Academic Sources</span>
+      <h2 class="sh-title">References</h2>
+    </div>
+  </div>
+  <div class="fi">
+    <p class="ref-item">Carroll, A. B. (1991). The pyramid of corporate social responsibility: Toward the moral management of organizational stakeholders. <em>Business Horizons, 34</em>(4), 39–48.</p>
+    <p class="ref-item">Edmondson, A. (1999). Psychological safety and learning behavior in work teams. <em>Administrative Science Quarterly, 44</em>(2), 350–383.</p>
+    <p class="ref-item">Herzberg, F., Mausner, B., &amp; Snyderman, B. B. (1959). <em>The motivation to work</em> (2nd ed.). John Wiley &amp; Sons.</p>
+    <p class="ref-item">Johnson, G., Whittington, R., &amp; Scholes, K. (2017). <em>Exploring strategy: Text and cases</em> (11th ed.). Pearson Education.</p>
+    <p class="ref-item">Knight Frank. (2024). <em>The wealth report 2024.</em> Knight Frank LLP.</p>
+    <p class="ref-item">Mintzberg, H. (1979). <em>The structuring of organizations.</em> Prentice-Hall.</p>
+    <p class="ref-item">Porter, M. E. (1979). How competitive forces shape strategy. <em>Harvard Business Review, 57</em>(2), 137–145.</p>
+    <p class="ref-item">Porter, M. E. (1985). <em>Competitive advantage: Creating and sustaining superior performance.</em> Free Press.</p>
+    <p class="ref-item">Y.CO. (2026). <em>About Y.CO.</em> Retrieved from https://www.yco.com</p>
+  </div>
+</section>
+
+<div class="yd"></div>
+
+<!-- ═══ APPENDICES ════════════════════════════════════════════════ -->
+<div class="full-bleed bg-ecru" id="app" style="padding-bottom:80px;">
+  <div class="inner">
+    <div class="sh fi">
+      <div class="sh-wrap">
+        <span class="sh-tag sh-tag-dark">Supporting Material</span>
+        <h2 class="sh-title">Appendices</h2>
+      </div>
+    </div>
+    <div class="fi">
+      <p class="p">Appendix A SWOT Analysis: See Section 03</p>
+      <p class="p">Appendix B PESTEL Analysis: See Section 02</p>
+      <p class="p">Appendix C Porter's Five Forces: See Section 04</p>
+      <p class="p">Appendix D Job Description &amp; Person Specification: See Section 06</p>
+      <p class="p">Appendix E Company literature, financial data, and sample work available on request in accordance with Y.CO's confidentiality policy.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <div class="glyph glyph-inv">
+      <svg viewBox="0 0 26 26" fill="none">
+        <path d="M5 5L13 15V22M21 5L13 15" stroke="#FFC719" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span>Y.CO Company Immersion Report</span>
+  </div>
+  <span class="footer-copy">International University of Monaco BBA3 Spring 2026</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
